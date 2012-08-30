@@ -45,79 +45,71 @@ Opera 9.6.3 (Windows).
 ## Usage
 
 1. Include jquery and the listmenu plugin in your page:
-    
-    
-      <script type="text/javascript" src="js/lib/jquery-1.3.2.min.js"></script>
-      <script type="text/javascript" src="js/lib/jquery.listmenu-1.1.js"></script>
-    
 
-> (adjust the src path for the files based on where your files are located)
+		```html
+		<script type="text/javascript" src="js/lib/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.listmenu-1.1.js"></script>
+		```
+
+	(adjust the src path for the files based on where your files are located)
 
 2. Add some HTML for your list. Your list wrapper **must** have an id attribute. For example:
     
-    
-      <ul id="myList">
-        <li><a href="#">A item</a></li>
-        <li><a href="#">B item</a></li>
-        <li><a href="#">C item</a></li>
-        etc...
-      </ul>
-    
+		```html
+		<ul id="myList">
+			<li><a href="#">A item</a></li>
+			<li><a href="#">B item</a></li>
+			<li><a href="#">C item</a></li>
+			etc...
+		</ul>
+		```
 
-> See the demos for more examples of the HTML you can use (other than UL >
-LI). Note: the # href's above are just placeholders. You would use your actual
-href's in those. Any HTML can be used inside of your list items.
+	See the [demos](http://www.ihwy.com/Labs/Demos/Current/jquery-listmenu-plugin.aspx) for more examples of the HTML you can use (other than UL >
+	LI). Note: the # href's above are just placeholders. You would use your actual
+	href's in those. Any HTML can be used inside of your list items.
 
-3a. Create your listmenu using the defaults (here wrapped in the jQuery
+3. Create your listmenu using the defaults (here wrapped in the jQuery
 document ready function):
 
-    
-    
-      <script type="text/javascript">
-        $(function(){
-          $('#myList').listmenu();
-        });
-      </script>
-    
+		```javascript
+		$(function(){
+			$('#myList').listmenu();
+		});
+		```
 
-3b. Or override some of the defaults. Here we're overriding all of them:
+4. Or override some of the defaults. Here we're overriding all of them:
 
-    
-    
-      <script type="text/javascript">
-        $(function(){
-          $('#myList').listmenu({
-            includeNums: false,
-            includeOther: true,
-            flagDisabled: false,
-            noMatchText: 'No items under this letter',
-            showCounts: false,
-            menuWidth: 825,
-            cols:{
-              count: 5,
-              gutter: 15
-            },
-            onClick:function($target){
-             if($target.is('a')){
-              alert($target.text() + ' was clicked');
-             }
-            }
-          });
-        });
-      </script>
-    
+		```javascript
+		$(function(){
+			$('#myList').listmenu({
+					includeNums: false,
+					includeOther: true,
+					flagDisabled: false,
+					noMatchText: 'No items under this letter',
+					showCounts: false,
+					menuWidth: 825,
+					cols:{
+					count: 5,
+					gutter: 15
+				},
+				onClick:function($target){
+					if($target.is('a')){
+						alert($target.text() + ' was clicked');
+					}
+				}
+			});
+		});
+		```
 
-Note: you can use any jQuery selector with .listmenu(). For example, if you
-have two lists on a page and you want to activate them both using the same
-listmenu options and both have the 'list' class on them, you could do:
-
+	Note: you can use any jQuery selector with .listmenu(). For example, if you
+	have two lists on a page and you want to activate them both using the same
+	listmenu options and both have the 'list' class on them, you could do:
     
-    
-      <script type="text/javascript">
-        $(function(){
-          $('.list').listmenu(); // set any options you want for all lists with the 'list' class
-        });
-      </script>
+		```javascript
+		$(function(){
+			$('.list').listmenu(); // set any options you want for all lists with the 'list' class
+		});
+		```
     
 
 ## Options
@@ -142,7 +134,7 @@ the defaults.
 		<tr>
 			<td>includeOther</td>
 			<td>false</td>
-			<td>true = show the [...] navigation item in the menu bar.<br/><br/>false = do not show the [...] navigation item. You may want to use this if your list contains items that start with punctuation or characters other than A-Z and 0-9 (like \u221a\u00d1 and \u221a\u00fa).</td>
+			<td>true = show the [...] navigation item in the menu bar.<br/><br/>false = do not show the [...] navigation item. You may want to use this if your list contains items that start with punctuation or characters other than A-Z and 0-9 (like &Auml; and &Uuml;).</td>
 		</tr>
 		<tr>
 			<td>flagDisabled</td>
@@ -172,7 +164,7 @@ the defaults.
 		<tr>
 			<td>onClick</td>
 			<td>null</td>
-			<td>Supply your own function to handle clicks on the dropdown menu. One argument is passed to the function: the clicked target as a jquery object. Event delegation is used internally to make this efficient. See the example in 3b under the Usage section above or check out Demo 6 in the <a href="demos/current/jquery-listmenu-plugin.aspx">demos</a>.</td>
+			<td>Supply your own function to handle clicks on the dropdown menu. One argument is passed to the function: the clicked target as a jquery object. Event delegation is used internally to make this efficient. See the example in 4 under the Usage section above or check out Demo 6 in the <a href="http://www.ihwy.com/Labs/demos/current/jquery-listmenu-plugin.aspx">demos</a>.</td>
 		</tr>
 	</tbody>
 </table>
@@ -181,72 +173,75 @@ the defaults.
 
 The iHwy listmenu plugin has been designed with CSS-based styling in mind. The
 easiest way for you to get started with styling your listmenu control is to
-use the [listmenu.css](downloads/jquery-listmenu/1.0/listmenu.css) file as a
+use the listmenu.css file as a
 reference point or include it in your page and then adjust or override it as
 needed.
 
 **Here's a copy of the most relevant CSS classes:**
     
-    
-    .lm-wrapper { margin:0; padding:0; }
-    .lm-wrapper .lm-letters { overflow:hidden; }
-    * html .lm-wrapper .lm-letters { zoom:1; } /* for IE6 so that menu appears under letters */
-    .lm-wrapper .lm-letters a { font-size:0.9em; display:block; float:left; padding:2px 11px; border:1px solid silver; border-right:none; text-decoration:none; }
-    .lm-wrapper .lm-letters a:hover,
-    .lm-wrapper .lm-letters a.lm-selected { background-color:#eaeaea; }
-    .lm-wrapper .lm-letters a.lm-disabled { color:#ccc; }
-    .lm-wrapper .lm-letters a.lm-last { border-right:1px solid silver; }
-    .lm-wrapper .lm-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
-    
-    .lm-wrapper .lm-menu { border:1px solid silver; border-top:1px solid silver; padding:15px; z-index:10; position:absolute; margin-top:-1px; background:#ffc; display:none; }
-    .lm-wrapper .lm-menu ul li { list-style-type:none; margin-bottom:5px; font-size:0.9em }
-    .lm-wrapper .lm-menu ol li { margin-left:15px; }
-    .lm-wrapper .lm-menu .lm-no-match { color:green; }
-    .lm-wrapper .lm-menu a { text-decoration:none; }
-    .lm-wrapper .lm-menu a:hover { text-decoration:underline; }
-    .lm-wrapper .lm-menu .lm-submenu { overflow:hidden; }
+	```css
+	.lm-wrapper { margin:0; padding:0; }
+	.lm-wrapper .lm-letters { overflow:hidden; }
+	* html .lm-wrapper .lm-letters { zoom:1; } /* for IE6 so that menu appears under letters */
+	.lm-wrapper .lm-letters a { font-size:0.9em; display:block; float:left; padding:2px 11px; border:1px solid silver; border-right:none; text-decoration:none; }
+	.lm-wrapper .lm-letters a:hover,
+	.lm-wrapper .lm-letters a.lm-selected { background-color:#eaeaea; }
+	.lm-wrapper .lm-letters a.lm-disabled { color:#ccc; }
+	.lm-wrapper .lm-letters a.lm-last { border-right:1px solid silver; }
+	.lm-wrapper .lm-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
+
+	.lm-wrapper .lm-menu { border:1px solid silver; border-top:1px solid silver; padding:15px; z-index:10; position:absolute; margin-top:-1px; background:#ffc; display:none; }
+	.lm-wrapper .lm-menu ul li { list-style-type:none; margin-bottom:5px; font-size:0.9em }
+	.lm-wrapper .lm-menu ol li { margin-left:15px; }
+	.lm-wrapper .lm-menu .lm-no-match { color:green; }
+	.lm-wrapper .lm-menu a { text-decoration:none; }
+	.lm-wrapper .lm-menu a:hover { text-decoration:underline; }
+	.lm-wrapper .lm-menu .lm-submenu { overflow:hidden; }
+	```
     		
 
 ## Some tips for using the CSS classes:
 
-**1.** Plan on styling the HTML that is created by the listmenu plugin, not your original list (except for people with javascript turned off). The original list is pulled out of the DOM so that the listmenu plugin can break it up by starting letter, create balanced columns and set it up to quickly hide and show submenu items.
+* Plan on styling the HTML that is created by the listmenu plugin, not your original list (except for people with javascript turned off). The original list is pulled out of the DOM so that the listmenu plugin can break it up by starting letter, create balanced columns and set it up to quickly hide and show submenu items.
 
-**2.** The list that you apply listmenu to **must** have an id on it. For example: `<ul id="myList">`. The listmenu that gets created will have a `<div>` outer wrapper generated with an id that is the same as your original list, plus '-menu'. It will also be given class="lm-wrapper". Using the 'myList' example, this is what the outer wrapper of the listmenu will end up being:
+* The list that you apply listmenu to **must** have an id on it. For example: `<ul id="myList">`. The listmenu that gets created will have a `<div>` outer wrapper generated with an id that is the same as your original list, plus '-menu'. It will also be given class="lm-wrapper". Using the 'myList' example, this is what the outer wrapper of the listmenu will end up being:
     
     
-      <div id="myList-menu" class="lm-wrapper">
-        <!-- all of the generated listmenu HTML will be in here -->
-      </div>
+		```html
+		<div id="myList-menu" class="lm-wrapper">
+			<!-- all of the generated listmenu HTML will be in here -->
+		</div>
+		```
     
 
-You can style the resulting listmenu using the generated id or style all
-listmenu controls in your site using the 'lm-wrapper' class.
+	You can style the resulting listmenu using the generated id or style all
+	listmenu controls in your site using the 'lm-wrapper' class.
 
-**3.** The letter navigation inside the listmenu has its own wrapper div with class="lm-letters", to make it easy to style. See the CSS above for how the 'lm-letters' class is used. Some notes:
+* The letter navigation inside the listmenu has its own wrapper div with class="lm-letters", to make it easy to style. See the CSS above for how the 'lm-letters' class is used. Some notes:
 
-***3.1.*** Each letter inside the letter navigation is an <a> tag styled with
-float:left and display:block, so that they line up next to each other
-horizontally. The last letter (Z) also gets the 'lm-last' class (typically
-used to draw a right border on the letter).
+	* Each letter inside the letter navigation is an `<a>` tag styled with
+	float:left and display:block, so that they line up next to each other
+	horizontally. The last letter (Z) also gets the 'lm-last' class (typically
+	used to draw a right border on the letter).
 
-***3.2.*** When a user mouses over a letter, the 'lm-selected' class gets added.
-When they mouse off of the letter, that class gets removed.
+	* When a user mouses over a letter, the 'lm-selected' class gets added.
+	When they mouse off of the letter, that class gets removed.
 
-***3.3.*** If the 'flagDisabled' option is set to true (the default), the 'lm-
-disabled' class gets added to each letter that has no matching entries in the
-original list. Use this class to "gray out" letters that will result in no
-matches.
+	* If the 'flagDisabled' option is set to true (the default), the 'lm-
+	disabled' class gets added to each letter that has no matching entries in the
+	original list. Use this class to "gray out" letters that will result in no
+	matches.
 
-***3.4.*** If the 'showCounts' option is set to true (the default), you can use 'lm-
-letter-count' class to style the 'count' that appears above each letter when
-it's moused-over.
+	* If the 'showCounts' option is set to true (the default), you can use 'lm-
+	letter-count' class to style the 'count' that appears above each letter when
+	it's moused-over.
 
-**4.** The dropdown menu that the listmenu plugin creates can be styled using the 'lm-menu' class. Note: the width of the menu is calculated by the listmenu control at runtime: if you want to adjust the width of the menu use the menuWidth option.
+* The dropdown menu that the listmenu plugin creates can be styled using the 'lm-menu' class. Note: the width of the menu is calculated by the listmenu control at runtime: if you want to adjust the width of the menu use the menuWidth option.
 
-**5.** All items inside the dropdown menu can be styled using the 'lm-menu' class as the parent class. The CSS above shows some default styling we've included for LI items inside of UL and OL lists and styling for <a> tags to hide the underline that HTML adds by default, then show it when a link gets hovered over.
+* All items inside the dropdown menu can be styled using the 'lm-menu' class as the parent class. The CSS above shows some default styling we've included for LI items inside of UL and OL lists and styling for `<a>` tags to hide the underline that HTML adds by default, then show it when a link gets hovered over.
 
-Note: the [demos](http://www.ihwy.com/Labs/demos/current/jquery-listmenu-plugin.aspx) inherit fonts and
-basic styling from the core CSS of the ihwy.com site. We also use the [YUI CSS
+**Note: the [demos](http://www.ihwy.com/Labs/demos/current/jquery-listmenu-plugin.aspx) inherit fonts and
+basic styling from the core CSS of the ihwy.com site.** We also use the [YUI CSS
 reset](http://developer.yahoo.com/yui/reset/) file to help with cross-browser
 styling. The CSS for the listmenu control is designed to play well with any
 CSS that a site might already have and the 'lm-wrapper' has it's own 'reset'
