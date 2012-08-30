@@ -46,23 +46,23 @@ Opera 9.6.3 (Windows).
 
 1. Include jquery and the listmenu plugin in your page:
 
-		```html
-		<script type="text/javascript" src="js/lib/jquery-1.3.2.min.js"></script>
-		<script type="text/javascript" src="js/lib/jquery.listmenu-1.1.js"></script>
-		```
+```html
+<script type="text/javascript" src="js/lib/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery.listmenu-1.1.js"></script>
+```
 
 	(adjust the src path for the files based on where your files are located)
 
 2. Add some HTML for your list. Your list wrapper **must** have an id attribute. For example:
     
-		```html
-		<ul id="myList">
-			<li><a href="#">A item</a></li>
-			<li><a href="#">B item</a></li>
-			<li><a href="#">C item</a></li>
-			etc...
-		</ul>
-		```
+```html
+<ul id="myList">
+	<li><a href="#">A item</a></li>
+	<li><a href="#">B item</a></li>
+	<li><a href="#">C item</a></li>
+	etc...
+</ul>
+```
 
 	See the [demos](http://www.ihwy.com/Labs/Demos/Current/jquery-listmenu-plugin.aspx) for more examples of the HTML you can use (other than UL >
 	LI). Note: the # href's above are just placeholders. You would use your actual
@@ -71,45 +71,45 @@ Opera 9.6.3 (Windows).
 3. Create your listmenu using the defaults (here wrapped in the jQuery
 document ready function):
 
-		```javascript
-		$(function(){
-			$('#myList').listmenu();
-		});
-		```
+```javascript
+$(function(){
+	$('#myList').listmenu();
+});
+```
 
 4. Or override some of the defaults. Here we're overriding all of them:
 
-		```javascript
-		$(function(){
-			$('#myList').listmenu({
-					includeNums: false,
-					includeOther: true,
-					flagDisabled: false,
-					noMatchText: 'No items under this letter',
-					showCounts: false,
-					menuWidth: 825,
-					cols:{
-					count: 5,
-					gutter: 15
-				},
-				onClick:function($target){
-					if($target.is('a')){
-						alert($target.text() + ' was clicked');
-					}
-				}
-			});
-		});
-		```
+```javascript
+$(function(){
+	$('#myList').listmenu({
+			includeNums: false,
+			includeOther: true,
+			flagDisabled: false,
+			noMatchText: 'No items under this letter',
+			showCounts: false,
+			menuWidth: 825,
+			cols:{
+			count: 5,
+			gutter: 15
+		},
+		onClick:function($target){
+			if($target.is('a')){
+				alert($target.text() + ' was clicked');
+			}
+		}
+	});
+});
+```
 
 	Note: you can use any jQuery selector with .listmenu(). For example, if you
 	have two lists on a page and you want to activate them both using the same
 	listmenu options and both have the 'list' class on them, you could do:
     
-		```javascript
-		$(function(){
-			$('.list').listmenu(); // set any options you want for all lists with the 'list' class
-		});
-		```
+```javascript
+$(function(){
+	$('.list').listmenu(); // set any options you want for all lists with the 'list' class
+});
+```
     
 
 ## Options
@@ -179,25 +179,25 @@ needed.
 
 **Here's a copy of the most relevant CSS classes:**
     
-	```css
-	.lm-wrapper { margin:0; padding:0; }
-	.lm-wrapper .lm-letters { overflow:hidden; }
-	* html .lm-wrapper .lm-letters { zoom:1; } /* for IE6 so that menu appears under letters */
-	.lm-wrapper .lm-letters a { font-size:0.9em; display:block; float:left; padding:2px 11px; border:1px solid silver; border-right:none; text-decoration:none; }
-	.lm-wrapper .lm-letters a:hover,
-	.lm-wrapper .lm-letters a.lm-selected { background-color:#eaeaea; }
-	.lm-wrapper .lm-letters a.lm-disabled { color:#ccc; }
-	.lm-wrapper .lm-letters a.lm-last { border-right:1px solid silver; }
-	.lm-wrapper .lm-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
+```css
+.lm-wrapper { margin:0; padding:0; }
+.lm-wrapper .lm-letters { overflow:hidden; }
+* html .lm-wrapper .lm-letters { zoom:1; } /* for IE6 so that menu appears under letters */
+.lm-wrapper .lm-letters a { font-size:0.9em; display:block; float:left; padding:2px 11px; border:1px solid silver; border-right:none; text-decoration:none; }
+.lm-wrapper .lm-letters a:hover,
+.lm-wrapper .lm-letters a.lm-selected { background-color:#eaeaea; }
+.lm-wrapper .lm-letters a.lm-disabled { color:#ccc; }
+.lm-wrapper .lm-letters a.lm-last { border-right:1px solid silver; }
+.lm-wrapper .lm-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
 
-	.lm-wrapper .lm-menu { border:1px solid silver; border-top:1px solid silver; padding:15px; z-index:10; position:absolute; margin-top:-1px; background:#ffc; display:none; }
-	.lm-wrapper .lm-menu ul li { list-style-type:none; margin-bottom:5px; font-size:0.9em }
-	.lm-wrapper .lm-menu ol li { margin-left:15px; }
-	.lm-wrapper .lm-menu .lm-no-match { color:green; }
-	.lm-wrapper .lm-menu a { text-decoration:none; }
-	.lm-wrapper .lm-menu a:hover { text-decoration:underline; }
-	.lm-wrapper .lm-menu .lm-submenu { overflow:hidden; }
-	```
+.lm-wrapper .lm-menu { border:1px solid silver; border-top:1px solid silver; padding:15px; z-index:10; position:absolute; margin-top:-1px; background:#ffc; display:none; }
+.lm-wrapper .lm-menu ul li { list-style-type:none; margin-bottom:5px; font-size:0.9em }
+.lm-wrapper .lm-menu ol li { margin-left:15px; }
+.lm-wrapper .lm-menu .lm-no-match { color:green; }
+.lm-wrapper .lm-menu a { text-decoration:none; }
+.lm-wrapper .lm-menu a:hover { text-decoration:underline; }
+.lm-wrapper .lm-menu .lm-submenu { overflow:hidden; }
+```
     		
 
 ## Some tips for using the CSS classes:
@@ -207,11 +207,11 @@ needed.
 * The list that you apply listmenu to **must** have an id on it. For example: `<ul id="myList">`. The listmenu that gets created will have a `<div>` outer wrapper generated with an id that is the same as your original list, plus '-menu'. It will also be given class="lm-wrapper". Using the 'myList' example, this is what the outer wrapper of the listmenu will end up being:
     
     
-		```html
-		<div id="myList-menu" class="lm-wrapper">
-			<!-- all of the generated listmenu HTML will be in here -->
-		</div>
-		```
+```html
+<div id="myList-menu" class="lm-wrapper">
+	<!-- all of the generated listmenu HTML will be in here -->
+</div>
+```
     
 
 	You can style the resulting listmenu using the generated id or style all
