@@ -254,10 +254,9 @@ built in via { margin:0; padding:0 }.
 
 ## Support
 
-Please post questions and feedback to the jQuery [general
-discussion](http://groups.google.com/group/jquery-en) group. We're active
-participants in the group. Use the word "listmenu" in the subject line to make
-it easy for us to notice.
+Please use the github [issue tracker](/iHwy/jQuery-ListMenu/issues) to
+let us know about bugs and/or request new features.  Pull requests are
+welcome!
 
 ## License
 
