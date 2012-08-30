@@ -4,7 +4,7 @@
 * Copyright (c) 2009 iHwy, Inc.
 * Author: Jack Killpatrick
 *
-* Version 1.0 (03/02/2009)
+* Version 1.1 (08/09/2009)
 * Requires jQuery 1.3.2 or jquery 1.2.6
 *
 * Visit http://www.ihwy.com/labs/jquery-listmenu-plugin.aspx for more information.
@@ -18,7 +18,7 @@
 (function($) {
 	$.fn.listmenu = function(options) {
 		var opts = $.extend({}, $.fn.listmenu.defaults, options);
-		var alph = ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+		var alph = ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-'];
 
 		return this.each(function() {
 			var $wrapper, list, $list, $letters, letters = {}, $letterCount, id, $menu, colOpts = $.extend({}, $.fn.listmenu.defaults.cols, opts.cols), onNav = false, onMenu = false, currentLetter = '';
@@ -35,7 +35,6 @@
 					$wrapper.append(createLettersHtml());
 
 					$letters = $('.lm-letters', $wrapper).slice(0, 1); // will always be a single item
-					$('.z', $letters).addClass('lm-last');
 					if (opts.showCounts) $letterCount = $('.lm-letter-count', $wrapper).slice(0, 1); // will always be a single item
 
 					$wrapper.append(createMenuHtml());
@@ -45,9 +44,11 @@
 
 					bindHandlers();
 
-					// decide whether to include num link
+					// decide whether to include num and/or other links
 					//
-					if (!opts.includeNums) $('._', $letters).hide();
+					if (!opts.includeNums) $('._', $letters).remove();
+					if (!opts.includeOther) $('.-', $letters).remove();
+					$(':last', $letters).addClass('lm-last');
 
 					$wrapper.show();
 				}, 50);
@@ -84,6 +85,7 @@
 					str = $(this).text().replace(/\s+/g, ''); // strip all white space from text (including tabs and linebreaks that might have been in the HTML) // thanks to Liam Byrne, liam@onsight.ie
 					if (str != '') {
 						firstChar = str.slice(0, 1).toLowerCase();
+						if (/\W/.test(firstChar)) firstChar = '-'; // not A-Z, a-z or 0-9, so considered "other"
 						if (!isNaN(firstChar)) firstChar = '_'; // use '_' if the first char is a number
 					}
 
@@ -224,6 +226,14 @@
 						}, 10);
 					}
 				);
+
+				if (opts.onClick != null) {
+					$menu.click(function(e) {
+						var $target = $(e.target);
+						opts.onClick($target);
+						return false;
+					});
+				}
 			}
 
 			// creates the HTML for the letter links
@@ -232,7 +242,7 @@
 				var html = [];
 				for (var i = 1; i < alph.length; i++) {
 					if (html.length == 0) html.push('<a class="_" href="#">0-9</a>');
-					html.push('<a class="' + alph[i] + '" href="#">' + alph[i].toUpperCase() + '</a>');
+					html.push('<a class="' + alph[i] + '" href="#">' + ((alph[i] == '-') ? '...' : alph[i].toUpperCase()) + '</a>');
 				}
 				return '<div class="lm-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="lm-letter-count" style="display:none; position:absolute; top:0; left:0; width:20px;">0</div>' : ''); // the styling for letterCount is to give us a starting point for the element, which will be repositioned when made visible (ie, should not need to be styled by the user)
 			}
@@ -251,6 +261,7 @@
 
 	$.fn.listmenu.defaults = {
 		includeNums: true,
+		includeOther: false,
 		flagDisabled: true,
 		noMatchText: 'No matching entries',
 		showCounts: true,
@@ -258,6 +269,7 @@
 		cols: {
 			count: 4,
 			gutter: 40
-		}
+		},
+		onClick: null
 	};
 })(jQuery);
