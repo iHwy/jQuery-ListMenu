@@ -44,16 +44,16 @@ Opera 9.6.3 (Windows).
 
 ## Usage
 
-1. Include jquery and the listmenu plugin in your page:
+Include jquery and the listmenu plugin in your page:
 
 ```html
 <script type="text/javascript" src="js/lib/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/lib/jquery.listmenu-1.1.js"></script>
 ```
 
-	(adjust the src path for the files based on where your files are located)
+> (adjust the src path for the files based on where your files are located)
 
-2. Add some HTML for your list. Your list wrapper **must** have an id attribute. For example:
+Add some HTML for your list. Your list wrapper **must** have an id attribute. For example:
     
 ```html
 <ul id="myList">
@@ -64,11 +64,11 @@ Opera 9.6.3 (Windows).
 </ul>
 ```
 
-	See the [demos](http://www.ihwy.com/Labs/Demos/Current/jquery-listmenu-plugin.aspx) for more examples of the HTML you can use (other than UL >
-	LI). Note: the # href's above are just placeholders. You would use your actual
-	href's in those. Any HTML can be used inside of your list items.
+> See the [demos](http://www.ihwy.com/Labs/Demos/Current/jquery-listmenu-plugin.aspx) for more examples of the HTML you can use (other than UL >
+LI). Note: the # href's above are just placeholders. You would use your actual
+href's in those. Any HTML can be used inside of your list items.
 
-3. Create your listmenu using the defaults (here wrapped in the jQuery
+Create your listmenu using the defaults (here wrapped in the jQuery
 document ready function):
 
 ```javascript
@@ -77,7 +77,7 @@ $(function(){
 });
 ```
 
-4. Or override some of the defaults. Here we're overriding all of them:
+Or override some of the defaults. Here we're overriding all of them:
 
 ```javascript
 $(function(){
@@ -101,9 +101,9 @@ $(function(){
 });
 ```
 
-	Note: you can use any jQuery selector with .listmenu(). For example, if you
-	have two lists on a page and you want to activate them both using the same
-	listmenu options and both have the 'list' class on them, you could do:
+Note: you can use any jQuery selector with .listmenu(). For example, if you
+have two lists on a page and you want to activate them both using the same
+listmenu options and both have the 'list' class on them, you could do:
     
 ```javascript
 $(function(){
@@ -213,9 +213,8 @@ needed.
 </div>
 ```
     
-
-	You can style the resulting listmenu using the generated id or style all
-	listmenu controls in your site using the 'lm-wrapper' class.
+> You can style the resulting listmenu using the generated id or style all
+listmenu controls in your site using the 'lm-wrapper' class.
 
 * The letter navigation inside the listmenu has its own wrapper div with class="lm-letters", to make it easy to style. See the CSS above for how the 'lm-letters' class is used. Some notes:
 
