@@ -11,7 +11,7 @@ and the columns in the submenu are nicely balanced.
 This is great for product lists, address books, contact lists, lists of
 hotels, parks and recreation areas, etc.
 
-[View the Demos](http://www.ihwy.com/Labs/demos/current/jquery-listmenu-plugin.aspx)
+[View the Demos](http://cdn.ihwy.net/ihwy-com/labs/demos/jquery-listmenu.html)
 
 ## Highlights
 
